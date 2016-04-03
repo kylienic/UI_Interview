@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Page Template</title>
+        <script type="text/javascript" src="js/d3.js"></script>
+        <script type="text/javascript" src="data.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <script type="text/javascript">
+
+			
+			// max sale value
+			var max = d3.max(datajs.data, function(d) { return d.Sales.replace(/[^0-9\.]+/g,""); });
+            // sum of all sales 
+            var sum = d3.sum(datajs.data, function(d) { return d.Sales.replace(/[^0-9\.]+/g,""); });
+
+            var q1 = d3.filter(function(d) { return d.Quarter == 1 });
+            console.log(q1);
+
+            console.log(max);
+            console.log(sum);
+
+             </script>
+    </body>
+</html>

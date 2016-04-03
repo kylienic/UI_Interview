@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Page Template</title>
+        <script type="text/javascript" src="js/d3.js"></script>
+        <script type="text/javascript" src="data.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <script type="text/javascript">
+            // Your beautiful D3 code will go here
+            // orielly tutorial 
+
+            d3.select("body").append("p").text("New paragraph!");
+            d3.select("body").selectAll("p")
+            .data(datajs.data)
+            .enter()
+            .append("p")
+            .text(function(d) { return d.Sales.replace(/[^0-9\.]+/g,""); });
+            console.log(datajs);
+
+            // max of all sales
+            var max = d3.max(datajs.data, function(d) { return d.Sales.replace(/[^0-9\.]+/g,""); });
+            // min of all sales
+            var min = d3.min(datajs.data, function(d) { return d.Sales.replace(/[^0-9\.]+/g,""); });
+            // sum of all sales 
+            var sum = d3.sum(datajs.data, function(d) { return d.Sales.replace(/[^0-9\.]+/g,""); });
+
+
+            // total sales in 2013
+            var sum2013 = d3.sum(datajs.data, function(d) { 
+                if(d.Year == 2013)
+                    return d.Sales.replace(/[^0-9\.]+/g,""); });
+
+            // total sales in 2014
+            var sum2014 = d3.sum(datajs.data, function(d) { 
+                if(d.Year == 2014)
+                    return d.Sales.replace(/[^0-9\.]+/g,""); });
+
+            var quarterSum = [0,0,0,0];
+
+            // var sumq1 = d3.sum(datajs.data, function(d) { 
+            //     if(d.Quarter == 1)
+            //         return d.Sales.replace(/[^0-9\.]+/g,""); });
+
+             d3.sum(datajs.data, function(d) { 
+                if(d.Quarter == 1){
+                    quarterSum[0] = quarterSum[0]+d.Sales.replace(/[^0-9\.]+/g,""); });
+                }
+                else if (d.Quarter == 2){
+                    quarterSum[1] = quarterSum[1]+d.Sales.replace(/[^0-9\.]+/g,""); });
+                }
+                else if (d.Quarter == 3){
+                    quarterSum[2] = quarterSum[2]+d.Sales.replace(/[^0-9\.]+/g,""); });
+                }
+                else {
+                    quarterSum[3] = quarterSum[2]+d.Sales.replace(/[^0-9\.]+/g,""); });
+                }
+
+
+        
+            var years = [sum2013, sum2014];
+
+            var diff = max-min; 
+            console.log(max);
+            console.log(min);
+            console.log(sum);
+            console.log(diff);
+            console.log(sum2013);
+            console.log(sum2014);
+
+            d3.select("body").selectAll("div")
+            .data(datajs.data)
+            .enter()
+            .append("div")
+            .attr("class", "bar")
+            .style("height", function(d) {
+                var money = d.Sales.replace(/[^0-9\.]+/g,"");
+                var barHeight = (money/diff)*200;
+                return barHeight + "px";
+            });
+
+            d3.select("body").selectAll("div")
+            .data(years)
+            .enter()
+            .append("div")
+            .attr("class", "bar")
+            .style("height", function(d) {
+                var barHeight = years;
+                return barHeight + "px";
+            });
+
+        </script>
+    </body>
+</html>
