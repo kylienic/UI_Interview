@@ -216,6 +216,16 @@ for(i=0; i<managerSum2013.length; i++)
 var totalManagerFrac = [0,0,0,0,0,0,0,0];
 for(i=0; i<totalManagerFrac.length; i++)
 	totalManagerFrac[i]=parseInt((totalManager[i]/totalsum)*100);
+
+var managers = [];
+managers.push("John");
+managers.push("Leonardo");
+managers.push("Paul");
+managers.push("George");
+managers.push("Michelangelo");
+managers.push("Ringo");
+managers.push("Raphael");
+managers.push("Donatello");
 //
 // Define Colors
 //
@@ -534,3 +544,63 @@ document.getElementById('legend1').innerHTML = lineChart1.generateLegend();
 document.getElementById('legend2').innerHTML = pieChart1.generateLegend();
 document.getElementById('legend3').innerHTML = pieChart2.generateLegend();
 document.getElementById('legend4').innerHTML = pieChart3.generateLegend();
+
+// generate table
+function GenerateTable() {
+            //Build an array containing Employee records.
+            var employees2013 = new Array();
+            var employees2014 = new Array();
+            employees2013.push(["Employee", "Sales", "Percentage"]);
+            for(i=0; i<8; i++){
+                employees2013.push([managers[i], "$" + managerSum2013[i].toFixed(0).replace(/./g, function(c, i, a) {
+                    return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                    }), ((managerSum2013[i]/sum2013)*100).toFixed(0)+"%"]);
+            }
+            employees2014.push(["Employee", "Sales", "Percentage"]);
+            for(i=0; i<8; i++){
+                if(managerSum2014 != 0){
+                    employees2014.push([managers[i], "$" + managerSum2014[i].toFixed(0).replace(/./g, function(c, i, a) {
+                        return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                        }), ((managerSum2014[i]/sum2014)*100).toFixed(0)+"%"]);
+                }
+            }
+
+            //Create a HTML Table element.
+            var table = document.getElementById("2013table");
+            table.border = "0";
+            var table2 = document.getElementById("2014table");
+            table2.border = "0";
+
+            var columnCount = 3;
+
+            //Add the header row.
+            var row = table.insertRow(-1);
+            for (var i = 0; i < columnCount; i++) {
+                var headerCell = document.createElement("TH");
+                headerCell.innerHTML = employees2013[0][i];
+                row.appendChild(headerCell);
+            }
+            var row = table2.insertRow(-1);
+            for (var i = 0; i < columnCount; i++) {
+                var headerCell = document.createElement("TH");
+                headerCell.innerHTML = employees2014[0][i];
+                row.appendChild(headerCell);
+            }
+
+            //Add the data rows.
+            for (var i = 1; i < employees2013.length; i++) {
+                row = table.insertRow(-1);
+                for (var j = 0; j < columnCount; j++) {
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = employees2013[i][j];
+                }
+            }
+            for (var i = 1; i < employees2014.length; i++) {
+                row = table2.insertRow(-1);
+                for (var j = 0; j < columnCount; j++) {
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = employees2014[i][j];
+                }
+            }
+        }
+GenerateTable();
