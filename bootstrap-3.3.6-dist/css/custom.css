@@ -93,6 +93,11 @@ img.kylie{
 	color: #A73157;
 	font-weight: bold;
 }
+/* blue active tabs*/
+.nav-tabs>li.active>a.blue, .nav-tabs>li.active>a.blue:focus, .nav-tabs>li.active>a.blue:hover {
+	color: #3498db;
+	font-weight: bold;
+}
 .orange{
 	color: #f39c12;
 }
@@ -132,4 +137,55 @@ img.kylie{
 }
 .pink3{
 	color:#C35377;
+}
+.plain{
+	color:#000;
+}
+.plain:hover{
+	color:#000;
+}
+.divider{
+    position:absolute;
+    left:50%;
+    top:10%;
+    bottom:10%;
+    border-left:3px solid #ccc;
+}
+.sales{
+	text-align: center;
+	border-left:3px solid #ccc;
+}
+.sales-end{
+	text-align: center;
+	border-left:3px solid #ccc;
+	border-right:3px solid #ccc;
+}
+.slant-title{
+	margin-top: 20px;
+	font-style: italic;
+	margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
+}
+.horiz-break{
+	border-bottom:1px solid #ccc;
+	margin: 20px;
+}
+.chart-title{
+	margin-left: 10px;
+}
+#breakdown:before { 
+  display: block; 
+  content: " "; 
+  margin-top: -50px; 
+  height: 50px; 
+  visibility: hidden; 
+}
+#top:before { 
+  display: block; 
+  content: " "; 
+  margin-top: -65px; 
+  height: 65px; 
+  visibility: hidden; 
 }
