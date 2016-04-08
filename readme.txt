@@ -30,5 +30,7 @@ Lessons learned:
 1. chart.js is far more limited than I needed it to be; next time I will use a different charts library. For V 2.0 I will use Google charts for the following reasons:
 	1. Interactivity between charts and graphs
 	2. Sorting capabilities within charts
+2. Dealing with data in a self-contained site (not hosted) is tricky! It took me awhile to figure out how to handle all the data locally. I had never done this before. 
+3. Colors are extremely important, easy to get wrong and difficult to get right. They communicate a lot. 
 
 Thank you for a fun and engaging project! - Kylie 
