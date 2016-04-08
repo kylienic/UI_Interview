@@ -176,6 +176,7 @@ img.kylie{
 }
 .chart-title{
 	margin-left: 10px;
+	margin-bottom: 0px;
 }
 #breakdown:before { 
   display: block; 
@@ -202,4 +203,24 @@ img.kylie{
 }
 .colored-accent{
 	color: #083236;
+}
+.chart-legend li span{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    text-align: right;
+}
+ul.line-legend{
+	list-style: none;
+	margin-right: 20px;
+
+}
+.chart-legend{
+	width: 100%;
+	text-align: right;
+}
+ul.pie-legend{
+	list-style: none;
+	text-align: left;
 }

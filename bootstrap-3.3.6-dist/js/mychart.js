@@ -249,7 +249,7 @@ var data = {
     datasets: [
         {
             label: "2013",
-            fillColor: "rgba(13,84,89, 0.5)",
+            fillColor: "rgba(13,84,89, 0.2)",
             strokeColor: colors['purple'],
             pointColor: colors['purple'],
             pointStrokeColor: "#fff",
@@ -421,7 +421,7 @@ var data = [
         label: "Donatello"
     }
 ]
-var myPieChart = new Chart(ctx).Pie(data, {responsive: true, multiTooltipTemplate: "<%= datasetLabel %>: <%= value %>%"});
+var pieChart1 = new Chart(ctx).Pie(data, {responsive: true, multiTooltipTemplate: "<%= datasetLabel %>: <%= value %>%"});
 // second pie chart
 var ctx = document.getElementById("pieChart2").getContext("2d");
 var data = [
@@ -474,7 +474,7 @@ var data = [
         label: "Donatello"
     }
 ]
-var myPieChart = new Chart(ctx).Pie(data, {responsive: true,});
+var pieChart2 = new Chart(ctx).Pie(data, {responsive: true,});
 // third pie chart
 var ctx = document.getElementById("pieChart3").getContext("2d");
 var data = [
@@ -527,4 +527,10 @@ var data = [
         label: "Donatello"
     }
 ]
-var myPieChart = new Chart(ctx).Pie(data, {responsive: true,});
+var pieChart3 = new Chart(ctx).Pie(data, {responsive: true,});
+
+// legends
+document.getElementById('legend1').innerHTML = lineChart1.generateLegend();
+document.getElementById('legend2').innerHTML = pieChart1.generateLegend();
+document.getElementById('legend3').innerHTML = pieChart2.generateLegend();
+document.getElementById('legend4').innerHTML = pieChart3.generateLegend();
