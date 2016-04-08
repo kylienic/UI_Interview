@@ -18,22 +18,22 @@ for(i=0; i<dataLength; i++){
      // Parse by year
      if(_data[i].Year == 2013){
          // 1. Add to 2013 Sum
-         sum2013 += parseInt(_data[i].Sales);
-         totalsum += parseInt(_data[i].Sales);
+         sum2013 += parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
+         totalsum += parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
          // 2. Count by Quarter
          switch (_data[i].Quarter){
             case 1:
-                quarterSum2013[0] = quarterSum2013[0]+parseInt(_data[i].Sales); 
+                quarterSum2013[0] = quarterSum2013[0]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,"")); 
                 break;
             case 2:
-                quarterSum2013[1] = quarterSum2013[1]+parseInt(_data[i].Sales);
+                quarterSum2013[1] = quarterSum2013[1]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case 3:
-                quarterSum2013[2] = quarterSum2013[2]+parseInt(_data[i].Sales);
+                quarterSum2013[2] = quarterSum2013[2]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 console.log(quarterSum2013[2]);
                 break;
             case 4:
-                quarterSum2013[3] = quarterSum2013[3]+parseInt(_data[i].Sales);
+                quarterSum2013[3] = quarterSum2013[3]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             default: 
                 break;
@@ -41,16 +41,16 @@ for(i=0; i<dataLength; i++){
         // 3. Count by Region
         switch(_data[i].Region){
             case "South East":
-                regionSum2013[0] = regionSum2013[0]+parseInt(_data[i].Sales);
+                regionSum2013[0] = regionSum2013[0]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "North East":
-                regionSum2013[1] = regionSum2013[1]+parseInt(_data[i].Sales);
+                regionSum2013[1] = regionSum2013[1]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "South West":
-                regionSum2013[2] = regionSum2013[2]+parseInt(_data[i].Sales);
+                regionSum2013[2] = regionSum2013[2]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "North West":
-                regionSum2013[3] = regionSum2013[3]+parseInt(_data[i].Sales);
+                regionSum2013[3] = regionSum2013[3]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             default: 
                 break;
@@ -58,28 +58,28 @@ for(i=0; i<dataLength; i++){
         //4. Count by Manager
         switch(_data[i].Manager){
             case "John":
-                managerSum2013[0] = managerSum2013[0]+parseInt(_data[i].Sales);
+                managerSum2013[0] = managerSum2013[0]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "Leonardo":
-                managerSum2013[1] = managerSum2013[1]+parseInt(_data[i].Sales);
+                managerSum2013[1] = managerSum2013[1]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "Paul":
-                managerSum2013[2] = managerSum2013[2]+parseInt(_data[i].Sales);
+                managerSum2013[2] = managerSum2013[2]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "George":
-                managerSum2013[3] = managerSum2013[3]+parseInt(_data[i].Sales);
+                managerSum2013[3] = managerSum2013[3]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "Michelangelo":
-                managerSum2013[4] = managerSum2013[4]+parseInt(_data[i].Sales);
+                managerSum2013[4] = managerSum2013[4]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "Ringo":
-                managerSum2013[5] = managerSum2013[5]+parseInt(_data[i].Sales);
+                managerSum2013[5] = managerSum2013[5]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "Raphael":
-                managerSum2013[6] = managerSum2013[6]+parseInt(_data[i].Sales);
+                managerSum2013[6] = managerSum2013[6]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "Donatello":
-                managerSum2013[7] = managerSum2013[7]+parseInt(_data[i].Sales);
+                managerSum2013[7] = managerSum2013[7]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             default: 
                 break;
@@ -87,21 +87,21 @@ for(i=0; i<dataLength; i++){
      }
      else{
         // 2014 Values 
-         sum2014 += parseInt(_data[i].Sales);
-         totalsum += parseInt(_data[i].Sales);
+         sum2014 += parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
+         totalsum += parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
          // 2. Count by Quarter
          switch (_data[i].Quarter){
             case 1:
-                quarterSum2014[0] = quarterSum2014[0]+parseInt(_data[i].Sales); 
+                quarterSum2014[0] = quarterSum2014[0]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,"")); 
                 break;
             case 2:
-                quarterSum2014[1] = quarterSum2014[1]+parseInt(_data[i].Sales);
+                quarterSum2014[1] = quarterSum2014[1]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case 3:
-                quarterSum2014[2] = quarterSum2014[2]+parseInt(_data[i].Sales);
+                quarterSum2014[2] = quarterSum2014[2]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case 4:
-                quarterSum2014[3] = quarterSum2014[3]+parseInt(_data[i].Sales);
+                quarterSum2014[3] = quarterSum2014[3]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             default: 
                 break;
@@ -109,16 +109,16 @@ for(i=0; i<dataLength; i++){
         // 3. Count by Region
         switch(_data[i].Region){
             case "South East":
-                regionSum2014[0] = regionSum2014[0]+parseInt(_data[i].Sales);
+                regionSum2014[0] = regionSum2014[0]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "North East":
-                regionSum2014[1] = regionSum2014[1]+parseInt(_data[i].Sales);
+                regionSum2014[1] = regionSum2014[1]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "South West":
-                regionSum2014[2] = regionSum2014[2]+parseInt(_data[i].Sales);
+                regionSum2014[2] = regionSum2014[2]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "North West":
-                regionSum2014[3] = regionSum2014[3]+parseInt(_data[i].Sales);
+                regionSum2014[3] = regionSum2014[3]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             default: 
                 break;
@@ -126,28 +126,28 @@ for(i=0; i<dataLength; i++){
         //4. Count by Manager
         switch(_data[i].Manager){
             case "John":
-                managerSum2014[0] = managerSum2014[0]+parseInt(_data[i].Sales);
+                managerSum2014[0] = managerSum2014[0]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "Leonardo":
-                managerSum2014[1] = managerSum2014[1]+parseInt(_data[i].Sales);
+                managerSum2014[1] = managerSum2014[1]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "Paul":
-                managerSum2014[2] = managerSum2014[2]+parseInt(_data[i].Sales);
+                managerSum2014[2] = managerSum2014[2]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "George":
-                managerSum2014[3] = managerSum2014[3]+parseInt(_data[i].Sales);
+                managerSum2014[3] = managerSum2014[3]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "Michelangelo":
-                managerSum2014[4] = managerSum2014[4]+parseInt(_data[i].Sales);
+                managerSum2014[4] = managerSum2014[4]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "Ringo":
-                managerSum2014[5] = managerSum2014[5]+parseInt(_data[i].Sales);
+                managerSum2014[5] = managerSum2014[5]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "Raphael":
-                managerSum2014[6] = managerSum2014[6]+parseInt(_data[i].Sales);
+                managerSum2014[6] = managerSum2014[6]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             case "Donatello":
-                managerSum2014[7] = managerSum2014[7]+parseInt(_data[i].Sales);
+                managerSum2014[7] = managerSum2014[7]+parseInt(_data[i].Sales.replace(/[^0-9\.]+/g,""));
                 break;
             default: 
                 break;
