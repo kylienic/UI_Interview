@@ -597,6 +597,8 @@ function GenerateTable() {
             }
             for (var i = 1; i < employees2014.length; i++) {
                 row = table2.insertRow(-1);
+                if(i == 1 || i == 4 || i == 6)
+                        continue;
                 for (var j = 0; j < columnCount; j++) {
                     var cell = row.insertCell(-1);
                     cell.innerHTML = employees2014[i][j];
