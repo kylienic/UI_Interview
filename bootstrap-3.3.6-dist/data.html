@@ -1,196 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>D3 Page Template</title>
-        <script type="text/javascript" src="js/d3.js"></script>
-        <script type="text/javascript" src="data.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-    </head>
-    <body>
-        <script type="text/javascript">
-            // Your beautiful D3 code will go here
-            // orielly tutorial 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Disney UI Internship Assignment">
+    <meta name="author" content="Kylie Nicholson">
+    <link rel="icon" href="img/bars.png">
 
-        
+    <title>Data- Kylie Nicholson Disney UI</title>
 
-            d3.select("body").append("p").text("New paragraph!");
-            d3.select("body").selectAll("p")
-            .data(datajs.data)
-            .enter()
-            .append("p")
-            .text(function(d) { return d.Sales.replace(/[^0-9\.]+/g,""); });
-            console.log(datajs);
+    <!-- Stylesheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 
-            // max of all sales
-            var max = d3.max(datajs.data, function(d) { return d.Sales.replace(/[^0-9\.]+/g,""); });
-            // min of all sales
-            var min = d3.min(datajs.data, function(d) { return d.Sales.replace(/[^0-9\.]+/g,""); });
-            // sum of all sales 
-            var sum = d3.sum(datajs.data, function(d) { return d.Sales.replace(/[^0-9\.]+/g,""); });
+    <!-- js-->
+    <script type="text/javascript" src="js/data_raw.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
-            var sum2013 = 0;
-            var sum2014 = 0;
-            var totalsum = 0;
-            var quarterSum2013 = [0,0,0,0];
-            var regionSum2013 = [0,0,0,0];
-            var quarterSum2014 = [0,0,0,0];
-            var regionSum2014 = [0,0,0,0];
+  <script>
+  $(function() {
+    $('a[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000);
+          return false;
+        }
+      }
+    });
+  });
+  </script>
 
-            // var yScale = d3.scale.linear()
-            //          .domain([0, max])
-            //          .range([0, h]);
-            // //Define Y axis
-            // var yAxis = d3.svg.axis()
-            //       .scale(yScale)
-            //       .orient("left")
-            //       .ticks(5);
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
 
+  <body>
 
-            // total sales in 2013
-            d3.sum(datajs.data, function(d) { 
-                if(d.Year == 2013){
-                    sum2013 = sum2013 + d.Sales.replace(/[^0-9\.]+/g,""); 
-                    // switch(d.Quarter){
-                    //     case: 1
-                    //         quarterSum2013[0] = quarterSum2013[0]+d.Sales.replace(/[^0-9\.]+/g,""); 
-                    //         break;
-                    //     case: 2
-                    //         quarterSum2013[1] = quarterSum2013[1]+d.Sales.replace(/[^0-9\.]+/g,""); 
-                    //         break;
-                    //     case: 3
-                    //         quarterSum2013[2] = quarterSum2013[2]+d.Sales.replace(/[^0-9\.]+/g,""); 
-                    //         break;
-                    //     case: 4
-                    //         quarterSum2013[3] = quarterSum2013[3]+d.Sales.replace(/[^0-9\.]+/g,""); 
-                    //         break;
-                    //     default: 
-                    //         break;
-                    // }
-                    // switch(d.Region){
-                    //     case: 1
-                    //         regionSum2013[0] = regionSum2013[0]+d.Sales.replace(/[^0-9\.]+/g,""); 
-                    //         break;
-                    //     case: 2
-                    //         regionSum2013[1] = regionSum2013[1]+d.Sales.replace(/[^0-9\.]+/g,"");
-                    //         break;
-                    //     case: 3
-                    //         regionSum2013[2] = regionSum2013[2]+d.Sales.replace(/[^0-9\.]+/g,"");
-                    //         break;
-                    //     case: 4
-                    //         regionSum2013[3] = regionSum2013[3]+d.Sales.replace(/[^0-9\.]+/g,"");
-                    //         break;
-                    //     default: 
-                    //         break;
-                    // }
-                    // LEFT OUT PEOPLE FOR NOW JUST TO SEE IF THIS WORKS
-                }
-                if(d.Year == 2014){
-                     sum2014 = sum2014+ d.Sales.replace(/[^0-9\.]+/g,""); 
-                    // switch(d.Quarter){
-                    //     case: 1
-                    //         quarterSum2014[0] = quarterSum2014[0]+d.Sales.replace(/[^0-9\.]+/g,""); 
-                    //         break;
-                    //     case: 2
-                    //         quarterSum2014[1] = quarterSum2014[1]+d.Sales.replace(/[^0-9\.]+/g,""); 
-                    //         break;
-                    //     case: 3
-                    //         quarterSum2014[2] = quarterSum2014[2]+d.Sales.replace(/[^0-9\.]+/g,""); 
-                    //         break;
-                    //     case: 4
-                    //         quarterSum2014[3] = quarterSum2014[3]+d.Sales.replace(/[^0-9\.]+/g,""); 
-                    //         break;
-                    //     default: 
-                    //         break;
-                    // }
-                    // switch(d.Region){
-                    //     case: 1
-                    //         regionSum2014[0] = regionSum2014[0]+d.Sales.replace(/[^0-9\.]+/g,""); 
-                    //         break;
-                    //     case: 2
-                    //         regionSum2014[1] = regionSum2014[1]+d.Sales.replace(/[^0-9\.]+/g,"");
-                    //         break;
-                    //     case: 3
-                    //         regionSum2014[2] = regionSum2014[2]+d.Sales.replace(/[^0-9\.]+/g,"");
-                    //         break;
-                    //     case: 4
-                    //         regionSum2014[3] = regionSum2014[3]+d.Sales.replace(/[^0-9\.]+/g,"");
-                    //         break;
-                    //     default: 
-                    //         break;
-                    // }
-                } 
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Disney UI</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Kylie</a></li>
+            <li class="active"><a href="data.html#top">Data</a></li>
+            <li><a href="#top">Overview</a></li>
+            <li><a href="#breakdown">Breakdown</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
-            });
-
-            // total sales in 2014
-            var sum2014 = d3.sum(datajs.data, function(d) { 
-                if(d.Year == 2014)
-                    return d.Sales.replace(/[^0-9\.]+/g,""); 
-            });
-
-            var quarterSum = [0,0,0,0];
-
-            // var sumq1 = d3.sum(datajs.data, function(d) { 
-            //     if(d.Quarter == 1)
-            //         return d.Sales.replace(/[^0-9\.]+/g,""); });
-
-             d3.sum(datajs.data, function(d) { 
-                if(d.Quarter == 1){
-                    quarterSum[0] = quarterSum[0]+d.Sales.replace(/[^0-9\.]+/g,"");
-                }
-                else if (d.Quarter == 2){
-                    quarterSum[1] = quarterSum[1]+d.Sales.replace(/[^0-9\.]+/g,"") ;
-                }
-                else if (d.Quarter == 3){
-                    quarterSum[2] = quarterSum[2]+d.Sales.replace(/[^0-9\.]+/g,"") ;
-                }
-                else {
-                    quarterSum[3] = quarterSum[2]+d.Sales.replace(/[^0-9\.]+/g,"") ;
-                }
-            });
-
-
-        
-            var years = [sum2013, sum2014];
-
-            var diff = max-min; 
-            console.log("Max: "+ max);
-            console.log("Min: " + min);
-            console.log("Sum: " + sum);
-            console.log("Diff: " + diff);
-            console.log("2013 Sum: " + sum2013);
-            console.log("2014 Sum: " + sum2014);
-            console.log("Total Sum: " + totalsum);
-
-            d3.select("body").selectAll("div")
-            .data(datajs.data)
-            .enter()
-            .append("div")
-            .attr("class", "bar")
-            .style("height", function(d) {
-                var money = d.Sales.replace(/[^0-9\.]+/g,"");
-                var barHeight = (money/diff)*200;
-                return barHeight + "px";
-            });
-
-            d3.select("body").selectAll("div")
-            .data(years)
-            .enter()
-            .append("div")
-            .attr("class", "bar")
-            .style("height", function(d) {
-                var barHeight = years;
-                return barHeight + "px";
-            });
-
-            //Create Y axis
-            svg.append("g")
-            .attr("class", "axis")
-            .attr("transform", "translate(" + padding + ",0)")
-            .call(yAxis);
-
-
-        </script>
-    </body>
+    <div class="container" id="top">
+      <div class="row">
+        <div class="col-xs-4">
+          <h1 class="title">Super Sales, Inc.</h1>
+          <p class="lead subtitle">Company Performance Report</p>
+          <p class="title">Sales summaries for 2013 and 2014</p>
+        </div>
+        <div class="col-xs-6 col-xs-offset-1">
+          <p class="slant-title">At a glance</p>
+            <div class="row">
+              <div class="col-xs-4 sales">
+                <p class="lead colored-accent">Total Sales</p>
+                <h3 class="colored">$597,428</h3>
+              </div>
+              <div class="col-xs-4 sales">
+                <p class="lead colored-accent"> 2013 Sales</p>
+                <h3 class="colored">$306,456</h3>
+              </div>
+              <div class="col-xs-4 sales-end">
+                <p class="lead colored-accent"> 2013 Sales</p>
+                <h3 class="colored">$290,972</h3>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 horiz-break">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4">
+        <p class="lead chart-title">2013 v 2014, by Quarter</p>
+        <canvas id="lineChart1" width="100%" height="50%"></canvas>
+        <canvas id="barChart3" width="100%" height="50%"></canvas>
+      </div>
+      <div class="col-xs-6 col-xs-offset-2">
+        <p class="lead">Two Year Breakdown: 2013-2014</p>
+        <canvas id="lineChart2" width="100%" height="50%"></canvas>
+      </div>
+    </div>
+    <div class="row" id="breakdown">
+      <div class="col-xs-12 horiz-break">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4">
+        <p class="lead">2013: Breakdown by Quarter</p>
+        <canvas id="barChart1" width="100%" height="50%"></canvas>
+      </div>
+      <div class="col-xs-4 col-xs-offset-2">
+        <p class="lead">2014: Breakdown by Quarter</p>
+        <canvas id="barChart2" width="100%" height="50%"></canvas> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 horiz-break">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4">
+        <p class="lead">Percentage of Sales per Employee, 2013-2014</p>
+        <canvas id="pieChart1" width="100%" height="80%%"></canvas>
+      </div>
+      <div class="col-xs-4">
+        <p class="lead">2013 Sales per Employee</p>
+        <canvas id="pieChart2" width="100%" height="50%"></canvas>
+      </div>
+      <div class="col-xs-4">
+        <p class="lead">2014 Sales per Employee</p>
+        <canvas id="pieChart3" width="100%" height="50%"></canvas>
+      </div>
+    </div>
+  </div><!-- /.container -->
+     <footer class="footer">
+      <div class="container">
+         <!-- <p class="footer-text">Built with magic.</p> -->
+      </div>
+    </footer>
+  
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
+</script> 
+ <!-- chart.js -->
+    <script src="js/Chart.js"></script>
+    <script src="js/mychart.js"></script>  
+  </body>
 </html>

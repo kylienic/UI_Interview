@@ -149,16 +149,18 @@ img.kylie{
     left:50%;
     top:10%;
     bottom:10%;
-    border-left:3px solid #ccc;
+    border-left:3px solid #16939c;
 }
 .sales{
 	text-align: center;
-	border-left:3px solid #ccc;
+	border-left:3px solid #16939c;
+	background: rgba(22, 147, 156,0.1);
 }
 .sales-end{
 	text-align: center;
-	border-left:3px solid #ccc;
-	border-right:3px solid #ccc;
+	border-left:3px solid #16939c;
+	border-right:3px solid #16939c;
+	background: rgba(22, 147, 156,0.1);
 }
 .slant-title{
 	margin-top: 20px;
@@ -188,4 +190,16 @@ img.kylie{
   margin-top: -65px; 
   height: 65px; 
   visibility: hidden; 
+}
+.title{
+	color: #031112;
+}
+.subtitle{
+	color: #0d5459
+}
+.colored{
+	color: #031112;
+}
+.colored-accent{
+	color: #083236;
 }
