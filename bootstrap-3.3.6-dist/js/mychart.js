@@ -421,7 +421,7 @@ var data = [
         label: "Donatello"
     }
 ]
-var myPieChart = new Chart(ctx).Pie(data, {responsive: true,});
+var myPieChart = new Chart(ctx).Pie(data, {responsive: true, multiTooltipTemplate: "<%= datasetLabel %>: <%= value %>%"});
 // second pie chart
 var ctx = document.getElementById("pieChart2").getContext("2d");
 var data = [
